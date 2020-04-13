@@ -1,11 +1,9 @@
-__precompile__(false)
 module OpenSpiel
 
 using CxxWrap
 using OpenSpiel_jll
 
 import CxxWrap:argument_overloads
-import Base:show, length, getindex, setindex!, keys, values, copy, deepcopy, first, last, step, getfield, setfield!
 
 @wrapmodule(libspieljl)
 
@@ -22,8 +20,7 @@ end
 
 
 function __init__()
-    # TODO: https://github.com/JuliaInterop/libcxxwrap-julia/issues/39#issuecomment-585019888
-    # @initcxx
+    @initcxx
 end
 
 
