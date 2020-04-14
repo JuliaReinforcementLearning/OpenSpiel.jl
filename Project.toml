@@ -1,7 +1,7 @@
 name = "OpenSpiel"
 uuid = "ceb70bd2-fe3f-44f0-b81f-41608acaf2f2"
 authors = ["Jun Tian <tianjun.cpp@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 CxxWrap = "1f15a43c-97ca-5a2a-ae31-89f07a497df4"
