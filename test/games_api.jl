@@ -18,7 +18,13 @@ end
 
 @testset "play kuhn_poker" begin
     game = load_game("kuhn_poker")
+    @test game == load_game("kuhn_poker")
+    @test hash(game) == hash(load_game("kuhn_poker"))
+
     state = new_initial_state(game)
+    @test game == load_game("kuhn_poker")
+    @test hash(game) == hash(load_game("kuhn_poker"))
+
     @test is_chance_node(state) == true
     @test chance_outcomes(state) == [0 => 1/3, 1 => 1/3, 2 => 1/3]
 

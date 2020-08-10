@@ -2,6 +2,14 @@ Base.show(io::IO, g::CxxWrap.StdLib.SharedPtrAllocated{Game}) = print(io, to_str
 Base.show(io::IO, s::CxxWrap.StdLib.UniquePtrAllocated{State}) = print(io, to_string(s))
 Base.show(io::IO, gp::Union{GameParameterAllocated, GameParameterDereferenced}) = print(io, to_repr_string(gp))
 
+function Base.hash(s::CxxWrap.CxxWrapCore.SmartPointer{T}, h::UInt) where {T<:Union{Game,State}}
+    hash(to_string(s), h)
+end
+
+function Base.:(==)(s::CxxWrap.CxxWrapCore.SmartPointer{T}, ss::CxxWrap.CxxWrapCore.SmartPointer{T}) where {T<:Union{Game, State}}
+    to_string(s) == to_string(ss)
+end
+
 GameParameter(x::Int) = GameParameter(Ref(Int32(x)))
 
 Base.copy(s::CxxWrap.StdLib.UniquePtrAllocated{State}) = deepcopy(s)
