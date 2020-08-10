@@ -23,12 +23,12 @@ function evaluate_bots(
             apply_action(state, action)
         elseif is_simultaneous_node(state)
             chosen_actions = [
-                legal_actions(state, pid)[pid+1] ? step(bot, state) : INVALID_ACTION
+                legal_actions(state, pid)[pid+1] ? OpenSpiel.step(bot, state) : INVALID_ACTION
                 for (pid, bot) in enumerate(bots)
             ]  # in julia, index starts with 1
             apply_action(state, chosen_actions)
         else
-            apply_action(state, step(bots[current_player(state) + 1], state))
+            apply_action(state, OpenSpiel.step(bots[current_player(state) + 1], state))
         end
     end
     returns(state)
