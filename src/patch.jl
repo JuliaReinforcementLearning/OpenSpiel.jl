@@ -14,6 +14,7 @@ GameParameter(x::Int) = GameParameter(Ref(Int32(x)))
 
 Base.copy(s::CxxWrap.StdLib.UniquePtrAllocated{State}) = deepcopy(s)
 Base.deepcopy(s::CxxWrap.StdLib.UniquePtrAllocated{State}) = clone(s)
+Base.reshape(s::CxxWrap.StdLib.StdVectorAllocated, dims::Int32...) = reshape(s, Int.(dims))
 
 if Sys.KERNEL == :Linux
     function apply_action(state, actions::AbstractVector{<:Number})
