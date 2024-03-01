@@ -15,7 +15,7 @@ test_exploitability_kuhn_poker(game, policy) = @test exploitability(game, policy
 
 @testset "CFRSolver" begin
     game = load_game("kuhn_poker")
-    solver = CFRSolver(game)
+    solver = CFRSolver(game[])
     for _ in 1:300
         evaluate_and_update_policy(solver)
     end
@@ -26,7 +26,7 @@ end
 
 @testset "CFRPlusSolver" begin
     game = load_game("kuhn_poker")
-    solver = CFRPlusSolver(game)
+    solver = CFRPlusSolver(game[])
     for _ in 1:200
         evaluate_and_update_policy(solver)
     end

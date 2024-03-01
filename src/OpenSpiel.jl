@@ -5,7 +5,7 @@ using OpenSpiel_jll
 
 import CxxWrap:argument_overloads
 
-@wrapmodule(libspieljl)
+@wrapmodule(OpenSpiel_jll.get_libspieljl_path)
 
 include("patch.jl")
 
