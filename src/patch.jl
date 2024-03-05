@@ -90,6 +90,8 @@ information_state_string(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = info
 
 information_state_string(state::CxxWrap.StdLib.UniquePtrAllocated{State}, i) = information_state_string(state[], i)
 
+information_state_tensor(state::CxxWrap.StdLib.UniquePtrAllocated{State}, i::Int64) = information_state_tensor(state[], i)
+
 get_uniform_policy(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = get_uniform_policy(game[])
 
 record_batched_trajectories(game::CxxWrap.StdLib.SharedPtrAllocated{Game}, p::CxxWrap.StdLib.StdVectorAllocated{TabularPolicy}, m::StdMapAllocated{StdString, Int32}, i::Int64, b::Bool, i2::Int64, i3::Int64) = record_batched_trajectories(game[], p, m, i, b, i2, i3)
