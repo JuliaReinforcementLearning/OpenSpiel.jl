@@ -9,7 +9,7 @@ OpenSpiel_jll = "bd10a763-4654-5023-a028-c4918c6cd33e"
 
 [compat]
 CxxWrap = "0.14"
-OpenSpiel_jll = "1"
+OpenSpiel_jll = "1.5"
 julia = "1.6"
 
 [extras]
