@@ -149,8 +149,8 @@ get_type(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Ga
 
 update_distribution(state::CxxWrap.StdLib.UniquePtrAllocated{State}, dist::CxxWrap.StdLib.StdVectorAllocated{Float64}) = update_distribution(state[], dist)
 
-num_cols(game::CxxWrap.StdLib.SharedPtrAllocated{MatrixGame}) = num_cols(game[][])
+num_cols(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{MatrixGame}}) = num_cols(game[][])
 
-num_rows(game::CxxWrap.StdLib.SharedPtrAllocated{MatrixGame}) = num_rows(game[][])
+num_rows(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{MatrixGame}}) = num_rows(game[][])
 
 extensive_to_matrix_game(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = extensive_to_matrix_game(game[][])
