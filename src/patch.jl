@@ -78,8 +78,7 @@ end
 
 is_chance_node(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = is_chance_node(state[])
 
-new_initial_state(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = new_initial_state(game[])
-
+new_initial_state(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = new_initial_state(game[])
 legal_actions(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = legal_actions(state[])
 
 child(state::CxxWrap.StdLib.UniquePtrAllocated{State}, i::Int64) = child(state[], i)
