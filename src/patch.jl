@@ -127,7 +127,7 @@ chance_outcomes(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = chance_outcom
 
 returns(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = returns(state[])
 
-min_utility(::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = min_utility(game[][])
+min_utility(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = min_utility(game[][])
 
 max_utility(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = max_utility(game[])
 
