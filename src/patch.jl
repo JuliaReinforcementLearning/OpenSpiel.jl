@@ -99,7 +99,7 @@ record_batched_trajectories(game::CxxWrap.StdLib.SharedPtrAllocated{Game}, p::Cx
 
 expected_returns(state::CxxWrap.StdLib.UniquePtrAllocated{State}, policy::CxxWrap.StdLib.SharedPtrAllocated{Policy}, i::Int64) = expected_returns(state[], policy[], i)
 
-exploitability(game::CxxWrap.StdLib.SharedPtrAllocated{Game}, policy::CxxWrap.StdLib.SharedPtrAllocated{Policy}) = exploitability(game[], policy[])
+exploitability(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}, policy::CxxWrap.StdLib.SharedPtrAllocated{Policy}) = exploitability(game[][], policy[])
 
 current_player(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = current_player(state[])
 
