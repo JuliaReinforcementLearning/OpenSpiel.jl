@@ -60,26 +60,25 @@ end
 
 function load_game(s::Union{String, CxxWrap.StdLib.StdStringAllocated}; kw...)
     if length(kw) == 0
-        _load_game(s)
+        _load_game(s)[]
     else
         ps = [StdString(string(k)) => v for (k,v) in kw]
-        _load_game(s, StdMap{StdString, GameParameter}(ps))
+        _load_game(s, StdMap{StdString, GameParameter}(ps))[]
     end
 end
 
 function load_game_as_turn_based(s::Union{String, CxxWrap.StdLib.StdStringAllocated}; kw...)
     if length(kw) == 0
-        _load_game_as_turn_based(s)
+        _load_game_as_turn_based(s)[]
     else
         ps = [StdString(string(k)) => v for (k,v) in kw]
-        _load_game_as_turn_based(s, StdMap{StdString, GameParameter}(ps))
+        _load_game_as_turn_based(s, StdMap{StdString, GameParameter}(ps))[]
     end
 end
 
 is_chance_node(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = is_chance_node(state[])
 
-new_initial_state(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = new_initial_state(game[])
-
+new_initial_state(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = new_initial_state(game[][])
 legal_actions(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = legal_actions(state[])
 
 child(state::CxxWrap.StdLib.UniquePtrAllocated{State}, i::Int64) = child(state[], i)
@@ -92,15 +91,15 @@ information_state_string(state::CxxWrap.StdLib.UniquePtrAllocated{State}, i) = i
 
 information_state_tensor(state::CxxWrap.StdLib.UniquePtrAllocated{State}, i::Int64) = information_state_tensor(state[], i)
 
-information_state_tensor_shape(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = information_state_tensor_shape(game[])
+information_state_tensor_shape(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = information_state_tensor_shape(game[][])
 
-get_uniform_policy(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = get_uniform_policy(game[])
+get_uniform_policy(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = get_uniform_policy(game[][])
 
-record_batched_trajectories(game::CxxWrap.StdLib.SharedPtrAllocated{Game}, p::CxxWrap.StdLib.StdVectorAllocated{TabularPolicy}, m::StdMapAllocated{StdString, Int32}, i::Int64, b::Bool, i2::Int64, i3::Int64) = record_batched_trajectories(game[], p, m, i, b, i2, i3)
+record_batched_trajectories(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}, p::CxxWrap.StdLib.StdVectorAllocated{TabularPolicy}, m::StdMapAllocated{StdString, Int32}, i::Int64, b::Bool, i2::Int64, i3::Int64) = record_batched_trajectories(game[][], p, m, i, b, i2, i3)
 
 expected_returns(state::CxxWrap.StdLib.UniquePtrAllocated{State}, policy::CxxWrap.StdLib.SharedPtrAllocated{Policy}, i::Int64) = expected_returns(state[], policy[], i)
 
-exploitability(game::CxxWrap.StdLib.SharedPtrAllocated{Game}, policy::CxxWrap.StdLib.SharedPtrAllocated{Policy}) = exploitability(game[], policy[])
+exploitability(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}, policy::CxxWrap.StdLib.SharedPtrAllocated{Policy}) = exploitability(game[][], policy[])
 
 current_player(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = current_player(state[])
 
@@ -128,11 +127,11 @@ chance_outcomes(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = chance_outcom
 
 returns(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = returns(state[])
 
-min_utility(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = min_utility(game[])
+min_utility(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = min_utility(game[][])
 
-max_utility(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = max_utility(game[])
+max_utility(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = max_utility(game[][])
 
-serialize_game_and_state(game::CxxWrap.StdLib.SharedPtrAllocated{Game}, state::CxxWrap.StdLib.UniquePtrAllocated{State}) = serialize_game_and_state(game[], state[])
+serialize_game_and_state(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}, state::CxxWrap.StdLib.UniquePtrAllocated{State}) = serialize_game_and_state(game[][], state[])
 
 is_mean_field_node(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = is_mean_field_node(state[])
 
@@ -142,16 +141,16 @@ history(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = history(state[])
 
 is_player_node(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = is_player_node(state[])
 
-num_players(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = num_players(game[])
+num_players(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = num_players(game[][])
 
 distribution_support(state::CxxWrap.StdLib.UniquePtrAllocated{State}) = distribution_support(state[])
 
-get_type(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = get_type(game[])
+get_type(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = get_type(game[][])
 
 update_distribution(state::CxxWrap.StdLib.UniquePtrAllocated{State}, dist::CxxWrap.StdLib.StdVectorAllocated{Float64}) = update_distribution(state[], dist)
 
-num_cols(game::CxxWrap.StdLib.SharedPtrAllocated{MatrixGame}) = num_cols(game[])
+num_cols(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{MatrixGame}}) = num_cols(game[][])
 
-num_rows(game::CxxWrap.StdLib.SharedPtrAllocated{MatrixGame}) = num_rows(game[])
+num_rows(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{MatrixGame}}) = num_rows(game[][])
 
-extensive_to_matrix_game(game::CxxWrap.StdLib.SharedPtrAllocated{Game}) = extensive_to_matrix_game(game[])
+extensive_to_matrix_game(game::CxxWrap.StdLib.SharedPtrAllocated{CxxWrap.CxxWrapCore.CxxConst{Game}}) = extensive_to_matrix_game(game[][])
